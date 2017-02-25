@@ -1,4 +1,7 @@
 # PyDePr
+[![PyPI version](https://badge.fury.io/py/pydepr.svg)](https://badge.fury.io/py/pydepr)
+[![Documentation Status](https://readthedocs.org/projects/pydepr/badge/?version=latest)](http://pydepr.readthedocs.io/en/latest/?badge=latest)
+
 PyDePr (Python Degradation Preprocessing) is a toolkit designed to facilitate
 the preprocessing of degradation models (i.e. condition-monitoring models for
 components such as engines or generators). Currently, supported modules 
