@@ -15,6 +15,9 @@ scikit-learn, sympy, statsmodels
 
 **Optional libraries**: pyedna (for pulling data from eDNA)
 
+## Documentation
+Latest documentation is kept [here](https://pydepr.readthedocs.io/en/latest/).
+
 ## Regression Modeling
 PyDePr supports the construction of multiple regression models, with built-in
 visual model validation. The following features are available:
