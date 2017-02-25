@@ -25,7 +25,7 @@ visual model validation. The following features are available:
 * Build the model equation in a user-friendly form
 * Create a series of plots for model validation and visualization
 
-![Regression](/images/Regression.png)
+![Regression](/images/Regression.jpg)
 
 ## Waveform Processing
 Still in development.
