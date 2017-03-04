@@ -30,7 +30,7 @@ visual model validation. The following features are available:
 * Build the model equation in a user-friendly form
 * Create a series of plots for model validation and visualization
 
-![Regression](/images/Regression.png)
+.. image:: https://github.com/drericstrong/pydepr/blob/master/images/Regression.jpg
 
 Inference Modeling
 ------------------
@@ -43,6 +43,3 @@ contrary evidence within this PyDePr module.
 Waveform Processing
 -------------------
 Still in development.
-
-
-
