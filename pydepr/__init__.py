@@ -8,5 +8,6 @@
     :license: Refer to LICENSE.txt for more information.
 """
 
-__version__ = '0.11'
+__version__ = '0.12'
 from .regression import PerformanceCurve
+from .inference import FuzzyStates, Evidence, ContraryEvidence, FailureMode
