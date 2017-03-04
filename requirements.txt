@@ -1,9 +1,9 @@
 matplotlib
 numpy
 pandas
-pyedna
 seaborn
 scipy
+scikit-fuzzy
 scikit-learn
 sympy
 statsmodels

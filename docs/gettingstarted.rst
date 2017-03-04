@@ -32,6 +32,14 @@ visual model validation. The following features are available:
 
 ![Regression](/images/Regression.png)
 
+Inference Modeling
+------------------
+The current degradation of a failure mode can be inferred using evidence and
+contrary evidence within this PyDePr module.
+
+* Assign evidence and contrary evidence to a failure mode
+* Use fuzzy logic to interpolate between inference states
+
 Waveform Processing
 -------------------
 Still in development.
