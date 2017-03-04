@@ -2,5 +2,6 @@
 setup.cfg
 setup.py
 pydepr\__init__.py
+pydepr\inference.py
 pydepr\regression.py
 pydepr\waveform.py
