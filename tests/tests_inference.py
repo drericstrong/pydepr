@@ -202,19 +202,19 @@ class TestContraryEvidence(unittest.TestCase):
         self.assertEqual(priors[3], danger_value)
 
 
-class TestFailureMode(unittest.TestCase):
+class TestConclusion(unittest.TestCase):
     def test_failureMode_construction(self):
         cpt = [0.1, 0.2, 0.3, 0.4]
         thresh = [-0.5, 0.5, 1.5, 2.5, 3.5]
         ev = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev])
+        fm = infer.Conclusion(0.2, evidence=[ev])
         self.assertEqual(fm.prior, 0.2)
 
     def test_calcProbBGivenA_1Node(self):
         cpt = [0.1, 0.2, 0.3, 0.4]
         thresh = [-0.5, 0.5, 1.5, 2.5, 3.5]
         ev = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev])
+        fm = infer.Conclusion(0.2, evidence=[ev])
         normal_actual = fm._prob_b_given_a([0])
         warning_actual = fm._prob_b_given_a([1])
         alarm_actual = fm._prob_b_given_a([2])
@@ -229,7 +229,7 @@ class TestFailureMode(unittest.TestCase):
         thresh = [-0.5, 0.5, 1.5, 2.5, 3.5]
         ev1 = infer.Evidence(thresh, cpt)
         ev2 = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2])
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2])
         normal_actual = fm._prob_b_given_a([0, 0])
         warning_actual = fm._prob_b_given_a([1, 1])
         alarm_actual = fm._prob_b_given_a([2, 2])
@@ -245,7 +245,7 @@ class TestFailureMode(unittest.TestCase):
         ev1 = infer.Evidence(thresh, cpt)
         ev2 = infer.Evidence(thresh, cpt)
         ev3 = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2, ev3])
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2, ev3])
         normal_actual = fm._prob_b_given_a([0, 0, 0])
         warning_actual = fm._prob_b_given_a([1, 1, 1])
         alarm_actual = fm._prob_b_given_a([2, 2, 2])
@@ -259,7 +259,7 @@ class TestFailureMode(unittest.TestCase):
         cpt = [0.1, 0.2, 0.3, 0.4]
         thresh = [-0.5, 0.5, 1.5, 2.5, 3.5]
         ev = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev])
+        fm = infer.Conclusion(0.2, evidence=[ev])
         normal_actual = fm._prob_b_given_not_a([0])
         warning_actual = fm._prob_b_given_not_a([1])
         alarm_actual = fm._prob_b_given_not_a([2])
@@ -274,7 +274,7 @@ class TestFailureMode(unittest.TestCase):
         thresh = [-0.5, 0.5, 1.5, 2.5, 3.5]
         ev1 = infer.Evidence(thresh, cpt)
         ev2 = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2])
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2])
         normal_actual = fm._prob_b_given_not_a([0, 0])
         warning_actual = fm._prob_b_given_not_a([1, 1])
         alarm_actual = fm._prob_b_given_not_a([2, 2])
@@ -290,7 +290,7 @@ class TestFailureMode(unittest.TestCase):
         ev1 = infer.Evidence(thresh, cpt)
         ev2 = infer.Evidence(thresh, cpt)
         ev3 = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2, ev3])
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2, ev3])
         normal_actual = fm._prob_b_given_not_a([0, 0, 0])
         warning_actual = fm._prob_b_given_not_a([1, 1, 1])
         alarm_actual = fm._prob_b_given_not_a([2, 2, 2])
@@ -304,7 +304,7 @@ class TestFailureMode(unittest.TestCase):
         cpt = [0.1, 0.2, 0.3, 0.4]
         thresh = [-0.5, 0.5, 1.5, 2.5, 3.5]
         ev = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev])
+        fm = infer.Conclusion(0.2, evidence=[ev])
         normal_actual = fm._prob_b([0])
         warning_actual = fm._prob_b([1])
         alarm_actual = fm._prob_b([2])
@@ -319,7 +319,7 @@ class TestFailureMode(unittest.TestCase):
         thresh = [-0.5, 0.5, 1.5, 2.5, 3.5]
         ev1 = infer.Evidence(thresh, cpt)
         ev2 = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2])
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2])
         normal_actual = fm._prob_b([0, 0])
         warning_actual = fm._prob_b([1, 1])
         alarm_actual = fm._prob_b([2, 2])
@@ -335,7 +335,7 @@ class TestFailureMode(unittest.TestCase):
         ev1 = infer.Evidence(thresh, cpt)
         ev2 = infer.Evidence(thresh, cpt)
         ev3 = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2, ev3])
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2, ev3])
         normal_actual = fm._prob_b([0, 0, 0])
         warning_actual = fm._prob_b([1, 1, 1])
         alarm_actual = fm._prob_b([2, 2, 2])
@@ -349,7 +349,7 @@ class TestFailureMode(unittest.TestCase):
         cpt = [0.1, 0.2, 0.3, 0.4]
         thresh = [-0.5, 0.5, 1.5, 2.5, 3.5]
         ev = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev])
+        fm = infer.Conclusion(0.2, evidence=[ev])
         normal_actual = fm.calc_prob_a_given_b([0])
         warning_actual = fm.calc_prob_a_given_b([1])
         alarm_actual = fm.calc_prob_a_given_b([2])
@@ -364,7 +364,7 @@ class TestFailureMode(unittest.TestCase):
         thresh = [-0.5, 0.5, 1.5, 2.5, 3.5]
         ev1 = infer.Evidence(thresh, cpt)
         ev2 = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2])
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2])
         normal_actual = fm.calc_prob_a_given_b([0, 0])
         warning_actual = fm.calc_prob_a_given_b([1, 1])
         alarm_actual = fm.calc_prob_a_given_b([2, 2])
@@ -380,7 +380,7 @@ class TestFailureMode(unittest.TestCase):
         ev1 = infer.Evidence(thresh, cpt)
         ev2 = infer.Evidence(thresh, cpt)
         ev3 = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2, ev3])
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2, ev3])
         normal_actual = fm.calc_prob_a_given_b([0, 0, 0])
         warning_actual = fm.calc_prob_a_given_b([1, 1, 1])
         alarm_actual = fm.calc_prob_a_given_b([2, 2, 2])
@@ -396,7 +396,7 @@ class TestFailureMode(unittest.TestCase):
         ev1 = infer.Evidence(thresh, cpt)
         ev2 = infer.Evidence(thresh, cpt)
         ev3 = infer.Evidence(thresh, cpt)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2, ev3])
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2, ev3])
         with self.assertRaises(AssertionError):
             normal_actual = fm.calc_prob_a_given_b([0, 0])
 
@@ -407,7 +407,7 @@ class TestFailureMode(unittest.TestCase):
         cev_prior = [0.3, 0.2, 0.1, 0.05]
         cev_thresh = [0, 1, 2, 3]
         cev = infer.ContraryEvidence(cev_thresh, cev_prior)
-        fm = infer.FailureMode(0.2, evidence=[ev], contrary=cev)
+        fm = infer.Conclusion(0.2, evidence=[ev], contrary=cev)
         normal_actual = fm.calc_prob_a_given_b([0], contrary=0.5)
         warning_actual = fm.calc_prob_a_given_b([1], contrary=1.5)
         alarm_actual = fm.calc_prob_a_given_b([2], contrary=2.5)
@@ -425,7 +425,7 @@ class TestFailureMode(unittest.TestCase):
         cev_prior = [0.3, 0.2, 0.1, 0.05]
         cev_thresh = [0, 1, 2, 3]
         cev = infer.ContraryEvidence(cev_thresh, cev_prior)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2], contrary=cev)
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2], contrary=cev)
         normal_actual = fm.calc_prob_a_given_b([0, 0], contrary=0.5)
         warning_actual = fm.calc_prob_a_given_b([1, 1], contrary=1.5)
         alarm_actual = fm.calc_prob_a_given_b([2, 2], contrary=2.5)
@@ -444,7 +444,7 @@ class TestFailureMode(unittest.TestCase):
         cev_prior = [0.3, 0.2, 0.1, 0.05]
         cev_thresh = [0, 1, 2, 3]
         cev = infer.ContraryEvidence(cev_thresh, cev_prior)
-        fm = infer.FailureMode(0.2, evidence=[ev1, ev2, ev3], contrary=cev)
+        fm = infer.Conclusion(0.2, evidence=[ev1, ev2, ev3], contrary=cev)
         normal_actual = fm.calc_prob_a_given_b([0, 0, 0], contrary=0.5)
         warning_actual = fm.calc_prob_a_given_b([1, 1, 1], contrary=1.5)
         alarm_actual = fm.calc_prob_a_given_b([2, 2, 2], contrary=2.5)

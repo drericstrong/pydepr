@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
     pydepr.regression
-    ~~~~~~~~~~~~~~~
+    -------------------
     PyDePr is a set of tools for processing degradation models. This module
     contains tools for processing and validating regression models.
 
@@ -23,15 +23,15 @@ from sklearn.metrics import explained_variance_score
 from sklearn.metrics import r2_score, mean_absolute_error
 
 
-class PerformanceCurve:
+class RegressionCurve:
     def __init__(self, y_data, x_data, y_label=None, x_labels=None):
         """
-        Runs the performance curve regression using a pandas DataFrame.
+        Runs the regression curve using a pandas DataFrame.
 
         :param y_data: a pandas DataFrame for the y data.
         :param x_data: a pandas DataFrame containing one or more X columns
-        :param y_label: Override the eDNA description with your own label.
-        :param x_labels: Override the eDNA description with your own labels.
+        :param y_label: Override the description with your own label.
+        :param x_labels: Override the description with your own labels.
             WARNING- must be exactly the same size as columns in x_data.
         """
         # Check that the correct number of x labels were supplied
@@ -111,7 +111,7 @@ class PerformanceCurve:
         # Concat along rows, since there are multiple time periods
         y_data = pd.concat(y_dfs, verify_integrity=True)
         x_data = pd.concat(x_dfs, verify_integrity=True)
-        return PerformanceCurve(y_data, x_data, y_label, x_labels)
+        return RegressionCurve(y_data, x_data, y_label, x_labels)
 
     def run(self):
         """

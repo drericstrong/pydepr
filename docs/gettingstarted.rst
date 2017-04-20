@@ -1,45 +1,50 @@
 ====================
- 1. Getting Started
+ 2. Getting Started
 ====================
 
-PyDePr (Python Degradation Preprocessing) is a toolkit designed to facilitate
-the preprocessing of degradation models (i.e. condition-monitoring models for
-components such as engines or generators). Currently, supported modules 
-include:
+Installation
+--------------
+If Python is already installed on your computer, PyDePr can be installed using 
+PyPI by opening a command window and typing:
 
-* Regression modeling
-* Waveform processing
+**pip install pydepr**
 
-Additional modules are in development.
+Upgrading to a new version of PyDePr can be accomplished by:
 
-Dependencies
-------------
-**Required libraries**: matplotlib, numpy, pandas, seaborn, scipy, 
-scikit-learn, sympy, statsmodels
+**pip install pydepr --upgrade**
 
-**Optional libraries**: pyedna (for pulling data from eDNA)
+The source code of PyDePr is hosted on GitHub at:
 
-Regression Modeling
--------------------
-PyDePr supports the construction of multiple regression models, with built-in
-visual model validation. The following features are available:
+https://github.com/drericstrong/pydepr
 
-* Initialize data from either a pandas DataFrame or eDNA
-* Automatically perform Ridge Regression
-* Calculate model performance metrics
-* Build the model equation in a user-friendly form
-* Create a series of plots for model validation and visualization
+Python Requirements
+--------------------
+**Required modules:** matplotlib, numpy, pandas, seaborn, scipy, scikit-learn, sympy, statsmodels
 
-.. image:: https://github.com/drericstrong/pydepr/blob/master/images/Regression.jpg
+PyDePr is integrated tightly with PyeDNA, with static helper functions for 
+pulling data directly from eDNA. PyeDNA is not required for most functions
+in PyDePr, but it will be loaded if necessary.
 
-Inference Modeling
-------------------
-The current degradation of a failure mode can be inferred using evidence and
-contrary evidence within this PyDePr module.
+A requirements.txt document is located in the GitHub repository, and all 
+package requirements can be installed using the following line in a
+command window:
 
-* Assign evidence and contrary evidence to a failure mode
-* Use fuzzy logic to interpolate between inference states
+**pip install -r requirements.txt**
 
-Waveform Processing
--------------------
-Still in development.
+Python Version Support
+------------------------
+Currently, PyDePr only supports Python 3.2+ and is not compatible with
+Python 2. If Python 2 support is important to you, please make a pull 
+request at:
+
+https://github.com/drericstrong/pydepr
+
+The package maintainer welcomes collaboration.
+
+Importing PyDePr
+-----------------
+Modules in PyDePr are usually imported into a script using the following lines:
+
+**import pydepr.regression as regr**
+
+**import pydepr.inference as infer**

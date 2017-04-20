@@ -5,14 +5,16 @@
 
 PyDePr
 ==================================
-PyDePr (Python Degradation Preprocessing) is a toolkit designed to facilitate
-the preprocessing of degradation models (i.e. condition-monitoring models for
-components such as engines or generators). 
+PyDePr is a toolkit designed to facilitate the preprocessing and validation of 
+machine learning models.
 
 .. toctree::
    :maxdepth: 2
    
+   introduction
    gettingstarted
+   regression
+   inference
    changelog
 
 

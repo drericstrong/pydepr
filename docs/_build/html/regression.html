@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Regression &mdash; PyDePr 0.13 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyDePr 0.13 documentation" href="index.html"/>
+        <link rel="next" title="4. Inference" href="inference.html"/>
+        <link rel="prev" title="2. Getting Started" href="gettingstarted.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyDePr
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.13
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Regression</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#regression-curve">Regression Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-validation">Model Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#equation-building">Equation Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initialization-from-edna">Initialization from eDNA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html">4. Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyDePr</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Regression</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/regression.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="regression">
+<h1>3. Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h1>
+<p>PyDePr supports the construction of regression models, with built-in
+visual model validation. The following features are available:</p>
+<ul class="simple">
+<li>Initialize data from either a pandas DataFrame or eDNA</li>
+<li>Automatically perform Ridge Regression</li>
+<li>Calculate model performance metrics</li>
+<li>Build the model equation in a user-friendly form</li>
+<li>Create a series of plots for model validation and visualization</li>
+</ul>
+<p>All code in this section assumes that you have imported PyDePr like:</p>
+<p><strong>import pydepr.regression as regr</strong></p>
+<div class="section" id="regression-curve">
+<h2>Regression Curve<a class="headerlink" href="#regression-curve" title="Permalink to this headline">¶</a></h2>
+<p>The base class in this namespace is the RegressionCurve class. You can
+initialize a RegressionCurve by supplying it with x and y data:</p>
+<p><strong>curve = regr.RegressionCurve(y_data, x_data)</strong></p>
+<p>Next, the &#8220;run&#8221; function will automatically create a Ridge Regression
+model using the x and y data:</p>
+<p><strong>curve.run()</strong></p>
+<p>Once the regression curve has been run, the model validation metrics
+can be found (next section).</p>
+</div>
+<div class="section" id="model-validation">
+<h2>Model Validation<a class="headerlink" href="#model-validation" title="Permalink to this headline">¶</a></h2>
+<p>PyDePr will generate a plot which can be used for validation of the
+regression model, using the following function:</p>
+<p><strong>f = curve.plot_validation()</strong></p>
+<p>Warning and alarm limits (based on standard deviations) can also be
+supplied to the plots:</p>
+<p><strong>f = curve.plot_validation(warn=2, alarm=3)</strong></p>
+<p>The validation metrics generated for the above plot can also be
+found directly:</p>
+<p><strong>metrics = curve.calculate_metrics()</strong></p>
+</div>
+<div class="section" id="equation-building">
+<h2>Equation Building<a class="headerlink" href="#equation-building" title="Permalink to this headline">¶</a></h2>
+<p>The RegressionCurve class will automatically build equations based
+on the results from the Ridge Regression:</p>
+<p><strong>eq, corr_eq = curve.build_equation()</strong></p>
+<p>The first value returned will be the full regression model equation,
+while the second value returned will be the &#8220;corrected&#8221; equation
+(more explanation below).</p>
+<p>The regular equation is of the format (for ease of import into eDNA):</p>
+<p><strong>Value = AX + BZ</strong></p>
+<p>The corrected equation is of the format:</p>
+<p><strong>Value = BZ - Y</strong></p>
+</div>
+<div class="section" id="initialization-from-edna">
+<h2>Initialization from eDNA<a class="headerlink" href="#initialization-from-edna" title="Permalink to this headline">¶</a></h2>
+<p>Using PyeDNA, regression models can be built automatically by simply
+supplying eDNA tags:</p>
+<p><strong>curve = regr.RegressionCurve.from_edna(y_tag, x_tags, dates=[DATES])</strong></p>
+<p>This is a static function that returns a RegressionCurve.</p>
+<p>The following parameters may be set:</p>
+<ul class="simple">
+<li>y_tag: an eDNA tag of the form Site.Service.Tag, enclosed by brackets. For example, [&#8220;MDSSCSC1.CALCALC.ADE1CA01&#8221;]</li>
+<li>x_tags: a list of eDNA tags, enclosed by brackets. For example: [&#8220;MDSSCSC1.CALCALC.ADE1CA01&#8221;, &#8220;MDSSCSC1.CALCALC.ADE1CA02&#8221;, &#8220;MDSSCSC1.CALCALC.ADE1CA03&#8221;]</li>
+<li>dates: NOT OPTIONAL. An array of arrays, where the innermost array is of the form [start_date, end_date]. This specifies which data to pull. For example: [[&#8220;01/01/2016&#8221;, &#8220;02/01/2016&#8221;], [&#8220;04/01/2017&#8221;,&#8221;07/01/2016&#8221;]]</li>
+<li>y_label: Override the eDNA description with your own label.</li>
+<li>x_labels: Override the eDNA description with your own labels. WARNING- must be exactly the same size as x_tags.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="inference.html" class="btn btn-neutral float-right" title="4. Inference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gettingstarted.html" class="btn btn-neutral" title="2. Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Eric Strong.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.13',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

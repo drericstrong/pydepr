@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
     pydepr.inference
-    ~~~~~~~~~~~~~~~~
+    ------------------
     PyDePr is a set of tools for processing degradation models. This module
     contains tools for inferring degradation based on evidence.
 
@@ -202,18 +202,17 @@ class ContraryEvidence:
         return self.priors[-1]
 
 
-class FailureMode:
+class Conclusion:
     def __init__(self, prior, name=None, evidence=None, contrary=None):
         """
-        Defines the current degradation of a failure mode, in terms of
-        evidence and contrary evidence.
+        Defines a conclusion in terms of evidence and contrary evidence.
 
-        :param name: an optional description or identifier of the failure mode
-        :param prior: the prior probability of failure mode occurrence
+        :param name: an optional description or identifier
+        :param prior: the prior probability of occurrence
         :param evidence: an array of "Evidence" class nodes which define
-            symptoms associated with the failure mode. At least 1 must exist.
+            symptoms associated with the conclusion. At least 1 must exist.
         :param contrary: a single "ContraryEvidence" class node which
-            contradicts the failure mode. A maximum of 1 may exist.
+            contradicts the conclusion. A maximum of 1 may exist.
         """
         # Basic error checking of the user inputs
         if not evidence:
@@ -257,7 +256,7 @@ class FailureMode:
     def calc_prob_a_given_b(self, values, contrary=None):
         """
         Given a list of values, calculates the associated probability
-        that the failure mode is occurring.
+        that the conclusion is occurring.
 
         :param values: An array that must be the same size as the number of
             evidence nodes.

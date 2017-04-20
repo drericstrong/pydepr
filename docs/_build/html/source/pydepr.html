@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pydepr package &mdash; PyDePr 0.13 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyDePr 0.13 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PyDePr
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.13
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regression.html">3. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inference.html">4. Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyDePr</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>pydepr package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/pydepr.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pydepr-package">
+<h1>pydepr package<a class="headerlink" href="#pydepr-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pydepr.regression">
+<span id="pydepr-regression-module"></span><h2>pydepr.regression module<a class="headerlink" href="#module-pydepr.regression" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pydepr-regression">
+<h3>pydepr.regression<a class="headerlink" href="#pydepr-regression" title="Permalink to this headline">¶</a></h3>
+<p>PyDePr is a set of tools for processing degradation models. This module
+contains tools for processing and validating regression models.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body"><ol class="first loweralpha simple" start="3">
+<li>2017 Eric Strong.</li>
+</ol>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body"><p class="first last">Refer to LICENSE.txt for more information.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="pydepr.regression.RegressionCurve">
+<em class="property">class </em><code class="descclassname">pydepr.regression.</code><code class="descname">RegressionCurve</code><span class="sig-paren">(</span><em>y_data</em>, <em>x_data</em>, <em>y_label=None</em>, <em>x_labels=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pydepr.regression.RegressionCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="pydepr.regression.RegressionCurve.build_equation">
+<code class="descname">build_equation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydepr.regression.RegressionCurve.build_equation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds an equation and corrected equation based on the results from
+the constructed model. Warning- &#8220;run&#8221; must be called first.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple containing the equation and the y-corrected equation.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pydepr.regression.RegressionCurve.calculate_metrics">
+<code class="descname">calculate_metrics</code><span class="sig-paren">(</span><em>warn=3</em>, <em>alarm=4</em><span class="sig-paren">)</span><a class="headerlink" href="#pydepr.regression.RegressionCurve.calculate_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates performance metrics for the performance curve.
+Warning- &#8220;run&#8221; must be called first.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>warn</strong> &#8211; # of standard deviations for the warning limit</li>
+<li><strong>alarm</strong> &#8211; # of standard deviations for the alarm limit</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an array of: [R^2, MAE, EV, Warn limit, Alarm limit]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pydepr.regression.RegressionCurve.from_edna">
+<em class="property">static </em><code class="descname">from_edna</code><span class="sig-paren">(</span><em>y_tag</em>, <em>x_tags</em>, <em>dates=None</em>, <em>y_label=None</em>, <em>x_labels=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pydepr.regression.RegressionCurve.from_edna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the performance curve regression by pulling data from eDNA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>y_tag</strong> &#8211; an eDNA tag of the form Site.Service.Tag, enclosed by
+brackets. For example, [&#8220;MDSSCSC1.CALCALC.ADE1CA01&#8221;]</li>
+<li><strong>x_tags</strong> &#8211; <p>a list of eDNA tags, enclosed by brackets. For example:
+[&#8220;MDSSCSC1.CALCALC.ADE1CA01&#8221;, &#8220;MDSSCSC1.CALCALC.ADE1CA02&#8221;,</p>
+<blockquote>
+<div>&#8220;MDSSCSC1.CALCALC.ADE1CA03&#8221;]</div></blockquote>
+</li>
+<li><strong>dates</strong> &#8211; NOT OPTIONAL. An array of arrays, where the innermost
+array is of the form [start_date, end_date]. This specifies which
+data to pull. For example: [[&#8220;01/01/2016&#8221;, &#8220;02/01/2016&#8221;],
+[&#8220;04/01/2017&#8221;,&#8221;07/01/2016&#8221;]]</li>
+<li><strong>y_label</strong> &#8211; Override the eDNA description with your own label.</li>
+<li><strong>x_labels</strong> &#8211; Override the eDNA description with your own labels.
+WARNING- must be exactly the same size as x_tags.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pydepr.regression.RegressionCurve.plot_validation">
+<code class="descname">plot_validation</code><span class="sig-paren">(</span><em>warn=3</em>, <em>alarm=4</em>, <em>title=None</em>, <em>save_fig=False</em>, <em>fig_size=(20</em>, <em>15)</em><span class="sig-paren">)</span><a class="headerlink" href="#pydepr.regression.RegressionCurve.plot_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a multi-plot to be used for model validation.
+Warning- &#8220;run&#8221; must be called first.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>warn</strong> &#8211; # of standard deviations for the warning limit</li>
+<li><strong>alarm</strong> &#8211; # of standard deviations for the alarm limit</li>
+<li><strong>title</strong> &#8211; an optional title for the plot</li>
+<li><strong>save_fig</strong> &#8211; if True, the figure will be saved to a file with a
+filename the same as the title</li>
+<li><strong>fig_size</strong> &#8211; the size of the plot</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">either a figure plotted in the console, or a figure that is
+saved to a file</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pydepr.regression.RegressionCurve.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pydepr.regression.RegressionCurve.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will run the performance curve analysis for the
+initialized data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-pydepr.waveform">
+<span id="pydepr-waveform-module"></span><h2>pydepr.waveform module<a class="headerlink" href="#module-pydepr.waveform" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pydepr-waveform">
+<h3>pydepr.waveform<a class="headerlink" href="#pydepr-waveform" title="Permalink to this headline">¶</a></h3>
+<p>PyDePr is a set of tools for processing degradation models. This module
+contains tools for processing and validating waveforms.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body"><ol class="first loweralpha simple" start="3">
+<li>2017 Eric Strong.</li>
+</ol>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body"><p class="first last">Refer to LICENSE.txt for more information.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="pydepr.waveform.Waveform">
+<em class="property">class </em><code class="descclassname">pydepr.waveform.</code><code class="descname">Waveform</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#pydepr.waveform.Waveform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="pydepr.waveform.Waveform.list_from_edna">
+<em class="property">static </em><code class="descname">list_from_edna</code><span class="sig-paren">(</span><em>tag</em>, <em>start_date</em>, <em>end_date</em>, <em>start_val=-7291290</em><span class="sig-paren">)</span><a class="headerlink" href="#pydepr.waveform.Waveform.list_from_edna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of waveforms from eDNA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tag</strong> &#8211; the eDNA tag to pull the waveform</li>
+<li><strong>start_date</strong> &#8211; the beginning of the data pull</li>
+<li><strong>end_date</strong> &#8211; the end of the data pull</li>
+<li><strong>start_val</strong> &#8211; value in history that defines the start of the array</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a pandas DataFrame, with each row as a single array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-pydepr">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pydepr" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pydepr">
+<h3>pydepr<a class="headerlink" href="#pydepr" title="Permalink to this headline">¶</a></h3>
+<p>PyDePr is a set of tools for processing degradation models.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body"><ol class="first loweralpha simple" start="3">
+<li>2017 by Eric Strong.</li>
+</ol>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body"><p class="first last">Refer to LICENSE.txt for more information.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Eric Strong.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.13',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

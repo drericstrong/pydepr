@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. Inference &mdash; PyDePr 0.13 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyDePr 0.13 documentation" href="index.html"/>
+        <link rel="next" title="Change Log" href="changelog.html"/>
+        <link rel="prev" title="3. Regression" href="regression.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyDePr
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.13
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">3. Regression</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Inference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#evidence">Evidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#counter-evidence">Counter Evidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fuzzystates">FuzzyStates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyDePr</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>4. Inference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/inference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="inference">
+<h1>4. Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h1>
+<p>Inference can be accomplished using time-series evidence within this
+PyDePr module.</p>
+<ul class="simple">
+<li>Assign evidence to a conclusion</li>
+<li>Use fuzzy logic to interpolate between conclusions</li>
+</ul>
+<div class="section" id="evidence">
+<h2>Evidence<a class="headerlink" href="#evidence" title="Permalink to this headline">¶</a></h2>
+<p>Conclusions are made using Bayesian inference based on the assigned Evidence.
+This class defines an Evidence input to a Conclusion. Any symptom which indicates
+the Conclusion may be used as an Evidence input.</p>
+<p>The following parameters may be supplied:</p>
+<ul class="simple">
+<li>thresholds: A list of thresholds in order: [normal, warning, alarm, danger, extreme danger]</li>
+<li>cpt: the conditional probability table for the evidence, which specifies the marginal probability distribution of the truth of the failure mode, depending on selected state. Must be an array of length 4. For example: [0.1, 0.2, 0.3, 0.4]</li>
+<li>name: an optional description or identifier.</li>
+<li>default_state: the default state of the evidence if bad input is received. 0 defaults to the prior, 1 defaults to Normal, 2 defaults to Warning, 3 defaults to Alarm, and 4 defaults to Danger. Recommended values are either 0 or 1.</li>
+</ul>
+</div>
+<div class="section" id="counter-evidence">
+<h2>Counter Evidence<a class="headerlink" href="#counter-evidence" title="Permalink to this headline">¶</a></h2>
+<p>This class defines a contrary evidence input to a Conclusion. Any symptom which will
+excuplate the occurrence of a Conclusion can be used as a ContraryEvidence node.</p>
+<p>The following parameters may be supplied:</p>
+<ul class="simple">
+<li>thresholds: A list of 4 thresholds in order: [normal, undetermined, abnormal, contradictory]</li>
+<li>priors: an array of updated priors for the Conclusion, based on the selected ContraryEvidence state. Must be length 4.</li>
+<li>name: an optional description or identifier.</li>
+</ul>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>This is the primary class that will be used in this model. Defines a Conclusion
+in terms of evidence and counter evidence.</p>
+<p>The following parameters may be supplied:</p>
+<ul class="simple">
+<li>name: an optional description or identifier</li>
+<li>prior: the prior probability of occurrence</li>
+<li>evidence: an array of &#8220;Evidence&#8221; class nodes which define symptoms associated with the Conclusion. At least 1 must exist.</li>
+<li>contrary: a single &#8220;ContraryEvidence&#8221; class node which contradicts the Conclusion. A maximum of 1 may exist.</li>
+</ul>
+</div>
+<div class="section" id="fuzzystates">
+<h2>FuzzyStates<a class="headerlink" href="#fuzzystates" title="Permalink to this headline">¶</a></h2>
+<p>This class is not meant to be used standalone, but it provides backend functionality
+for the above classes.</p>
+<p>FuzzyStates uses a fuzzy linear interpolation between the four user-defined states.
+Warning- the supplied values must be the &#8220;midpoints&#8221;, or the thresholds at which
+the fuzzy membership for the state should be equal to 100%. Total membership across
+all four states must always be equal to 100%.</p>
+<p>The following parameters may be supplied:</p>
+<ul class="simple">
+<li>normal: signal value under normal behavior.</li>
+<li>warning: signal value that begins to indicate an anomaly.</li>
+<li>alarm: onset of significant poor behavior.</li>
+<li>danger: signal strongly indicates the Conclusion.</li>
+<li>steps: an optional parameter for the # of steps of the range of fuzzy values. Must be at least 100.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Change Log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="regression.html" class="btn btn-neutral" title="3. Regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Eric Strong.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.13',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
