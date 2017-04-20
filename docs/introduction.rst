@@ -1,7 +1,7 @@
 ====================
  1. Introduction
 ====================
-PyDePr is a toolkit designed to facilitate the preprocessing and validation of 
+PyDePr ("pie-deeper") is a toolkit designed to facilitate the preprocessing and validation of 
 machine learning models. What does that mean? Machine learning models are often 
 specialized, requiring years of experience to correctly configure. The hardest 
 step is often preprocessing the dataset to be analyzed. An old joke in machine

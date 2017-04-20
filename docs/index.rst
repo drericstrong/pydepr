@@ -8,7 +8,7 @@ PyDePr
 
 .. image:: https://github.com/drericstrong/pydepr/blob/master/images/pydepr_small.jpg?raw=true
 
-PyDePr is a toolkit designed to facilitate the preprocessing and validation of 
+PyDePr ("pie-deeper") is a toolkit designed to facilitate the preprocessing and validation of 
 machine learning models.
 
 .. toctree::

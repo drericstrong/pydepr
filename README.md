@@ -4,7 +4,7 @@
 [![PyPI version](https://badge.fury.io/py/pydepr.svg)](https://badge.fury.io/py/pydepr)
 [![Documentation Status](https://readthedocs.org/projects/pydepr/badge/?version=latest)](http://pydepr.readthedocs.io/en/latest/?badge=latest)
 
-PyDePr is a toolkit designed to facilitate the preprocessing and validation of 
+PyDePr ("pie-deeper") is a toolkit designed to facilitate the preprocessing and validation of 
 machine learning models. What does that mean? Machine learning models are often 
 specialized, requiring years of experience to correctly configure. The hardest 
 step is often preprocessing the dataset to be analyzed. An old joke in machine
