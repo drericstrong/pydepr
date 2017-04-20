@@ -1,4 +1,6 @@
 # PyDePr
+![PyDePr](https://github.com/drericstrong/pydepr/blob/master/images/pydepr_small.jpg)
+
 [![PyPI version](https://badge.fury.io/py/pydepr.svg)](https://badge.fury.io/py/pydepr)
 [![Documentation Status](https://readthedocs.org/projects/pydepr/badge/?version=latest)](http://pydepr.readthedocs.io/en/latest/?badge=latest)
 
