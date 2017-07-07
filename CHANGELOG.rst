@@ -15,3 +15,7 @@ Version 0.13
 -------------
 - New and improved documentation
 - Minor work on the waveform module
+
+Version 0.14
+-------------
+- Significant refactoring of the regression model

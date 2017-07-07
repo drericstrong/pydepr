@@ -1,11 +1,11 @@
-====================
+=====================
  3. Regression
-====================
+=====================
 PyDePr supports the construction of regression models, with built-in
 visual model validation. The following features are available:
 
-* Initialize data from either a pandas DataFrame or eDNA
-* Automatically perform Ridge Regression
+* Supply data from either a pandas DataFrame or eDNA
+* Automatically perform Ridge Regression, Lasso, LassoLars, and ElasticNet
 * Calculate model performance metrics
 * Build the model equation in a user-friendly form
 * Create a series of plots for model validation and visualization
@@ -17,9 +17,32 @@ All code in this section assumes that you have imported PyDePr like:
 Regression Curve
 ------------------
 The base class in this namespace is the RegressionCurve class. You can
-initialize a RegressionCurve by supplying it with x and y data:
+initialize a RegressionCurve by supplying it with a model type:
 
-**curve = regr.RegressionCurve(y_data, x_data)**
+**curve = regr.RegressionCurve(model_type="ridge")**
+
+Possible values for the model_type parameter are "Lasso", "ElasticNet", 
+"Ridge", and "LassoLars". The default value is "Ridge".
+
+Next, provide the model with inputs (x data) and outputs (y data),
+using the **add_input** and **add_output** methods, respectively:
+
+**curve.add_input(x_data)**
+
+**curve.add_output(y_data)**
+
+If x data already exists, it will merge the new data with the existing 
+data using an outer join, by default. However, only one y variable 
+may be specified, so the **add_output** function will overwrite all the 
+existing y_data.
+
+Optionally, you can specify data filters using the add_filter method:
+
+**curve.add_filter(filter_data, low_value, high_value)**
+
+The x and y data will be filtered based on when the filter_data is 
+greater than or equal to the low_value, and less than or equal to the 
+high_value.
 
 Next, the "run" function will automatically create a Ridge Regression
 model using the x and y data:
@@ -64,20 +87,3 @@ The regular equation is of the format (for ease of import into eDNA):
 The corrected equation is of the format:
 
 **Value = BZ - Y**
-
-Initialization from eDNA
---------------------------
-Using PyeDNA, regression models can be built automatically by simply
-supplying eDNA tags:
-
-**curve = regr.RegressionCurve.from_edna(y_tag, x_tags, dates=[DATES])**
-
-This is a static function that returns a RegressionCurve.
-
-The following parameters may be set:
-
-* y_tag: an eDNA tag of the form Site.Service.Tag, enclosed by brackets. For example, ["MDSSCSC1.CALCALC.ADE1CA01"]
-* x_tags: a list of eDNA tags, enclosed by brackets. For example: ["MDSSCSC1.CALCALC.ADE1CA01", "MDSSCSC1.CALCALC.ADE1CA02", "MDSSCSC1.CALCALC.ADE1CA03"]
-* dates: NOT OPTIONAL. An array of arrays, where the innermost array is of the form [start_date, end_date]. This specifies which data to pull. For example: [["01/01/2016", "02/01/2016"], ["04/01/2017","07/01/2016"]]
-* y_label: Override the eDNA description with your own label.
-* x_labels: Override the eDNA description with your own labels. WARNING- must be exactly the same size as x_tags.

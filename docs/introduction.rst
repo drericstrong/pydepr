@@ -1,6 +1,6 @@
-====================
+=====================
  1. Introduction
-====================
+=====================
 PyDePr ("pie-deeper") is a toolkit designed to facilitate the preprocessing and validation of 
 machine learning models. What does that mean? Machine learning models are often 
 specialized, requiring years of experience to correctly configure. The hardest 
@@ -21,6 +21,7 @@ PyDePr is organized into several namespaces, including:
 
 * regression
 * inference
+* waveform
 
 The regression namespace handles all preprocessing and validation for regression 
 models, including a visualization of results. The inference namespace is meant
